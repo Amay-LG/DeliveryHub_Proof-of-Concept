@@ -30,10 +30,3 @@ When serving consumer support inquiries, LLMs must answer accurately while stric
 * **Node.js**: v18.0.0+
 * **Python** 3.10+ 
 * Valid API Keys for Anthropic, Google Gemini, and OpenAI. (WIP)
-
-### Installation
-
-1. **Clone the Repository**
-   ```bash
-   git clone [https://github.com/your-username/faq-llm-benchmark-poc.git](https://github.com/your-username/faq-llm-benchmark-poc.git)
-   cd faq-llm-benchmark-poc
