@@ -1,11 +1,11 @@
 
-# ⚡ Multi-Provider FAQ Evaluation Engine
+#  Multi-Provider FAQ Evaluation Engine
 
 A proof-of-concept (PoC) application designed to benchmark **Claude**, **Gemini**, and **OpenAI** APIs. 
 It checks for correctness, efficiency, and cost effectiveness of a model
 ---
 
-## 🎯 Project Overview
+##  Project Overview
 
 When serving consumer support inquiries, LLMs must answer accurately while strictly avoiding hallucinations about business policies, pricing, and services. This sandbox executes identical consumer prompts across all three major AI providers alongside a baseline FAQ dataset to measure:
 
@@ -15,7 +15,7 @@ When serving consumer support inquiries, LLMs must answer accurately while stric
 
 ---
 
-## 🛠️ Tech Stack & Provider Models
+##  Tech Stack & Provider Models
 
 |React (Vite/Tailwind CSS)| Frontend |
 |FastAPI (Python)| Backend |
