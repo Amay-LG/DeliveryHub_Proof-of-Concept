@@ -3,9 +3,17 @@ import httpx
 import asyncio
 from fastapi import FastAPI
 from dotenv import load_dotenv
+from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv()
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 @app.get("/test-models")
 async def evaluate_gemini_models():

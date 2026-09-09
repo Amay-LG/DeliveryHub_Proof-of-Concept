@@ -12,7 +12,7 @@ function useAutoScroll(dependencies) {
         //How Far from top^ = Scroll for height of element , Basically scroll to bottom
       }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, dependencies); //Every time chatMessages changes, it will update
+    }, [dependencies]); //Every time chatMessages changes, it will update
     //    ^ Dependency Array
   
     return chatMessagesRef;

@@ -24,9 +24,17 @@ export function ChatInput({chatMessages, setChatMessages}){ //Must start with ca
       ];
   
       setChatMessages(newChatMessages);
-  
+
       setInputText(''); //Sets inputText to empty, but does NOT update HTML
-      
+      console.log("it started the await part");
+      const res = await fetch(
+        `http://localhost:8000/generate-message?model_name=gemini-3.5-flash-lite&prompt=${encodeURIComponent(inputText)}`
+      );
+      console.log("it halfway through the await part");
+      const data = await res.json();
+
+      console.log("it finished the await part");
+
       setIsLoading(true);
       setChatMessages([ //Added new value to end of array
         ...newChatMessages,
@@ -40,8 +48,8 @@ export function ChatInput({chatMessages, setChatMessages}){ //Must start with ca
       setChatMessages([ //Added new value to end of array
         ...newChatMessages,
         {
-          // message: await Chatbot.getResponseAsync(inputText),
-          message: 'Filler',
+          // message: "Filler",
+          message: data.data,
           sender: 'robot',
           id: crypto.randomUUID()
         }
