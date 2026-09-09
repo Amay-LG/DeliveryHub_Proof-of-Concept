@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 app = FastAPI()
 
-@app.get("/evaluate-models")
+@app.get("/test-models")
 async def evaluate_gemini_models():
     api_key = os.getenv("GEMINI_API_KEY")
     if not api_key:
@@ -40,4 +40,27 @@ async def evaluate_gemini_models():
             "latency_seconds": response2.elapsed.total_seconds(), # Extracts the exact time
             "data": response2.json()["candidates"][0]["content"]["parts"][0]["text"]
         }
+    }
+
+@app.get("/generate-message")
+async def get_message_from_gemini(model_name, prompt):
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        return {"error": "API key is missing"}
+
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
+    headers = {"Content-Type": "application/json"}
+    payload = {
+        "contents": [{"parts": [{"text": prompt}]}]
+    }
+
+    timeout_settings = httpx.Timeout(30.0)
+    
+    async with httpx.AsyncClient(timeout=timeout_settings) as client:
+        response = await client.post(url, headers=headers, json=payload)
+        
+    return {
+        "status": response.status_code,
+        "latency_seconds": response.elapsed.total_seconds(),
+        "data": response.json()["candidates"][0]["content"]["parts"][0]["text"]
     }
