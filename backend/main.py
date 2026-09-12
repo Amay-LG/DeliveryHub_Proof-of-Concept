@@ -2,12 +2,16 @@ import os
 import httpx
 import asyncio
 import json
+import psycopg2
+import psycopg2.extras
 from fastapi import FastAPI
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv()
 app = FastAPI()
+DATABASE_URL = os.getenv("DATABASE_URL")
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:5173"],
@@ -74,6 +78,30 @@ async def get_message_from_gemini(model_name, prompt):
         "data": response.json()["candidates"][0]["content"]["parts"][0]["text"]
     }
 
+def get_relevant_faqs(prompt: str, limit: int = 3):
+    conn = psycopg2.connect(DATABASE_URL)
+    cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+
+    keywords = [w for w in prompt.lower().split() if len(w) > 3]
+    if not keywords:
+        cur.close()
+        conn.close()
+        return []
+
+    conditions = " OR ".join(["question ILIKE %s OR answer ILIKE %s"] * len(keywords))
+    params = []
+    for kw in keywords:
+        params.extend([f"%{kw}%", f"%{kw}%"])
+    params.append(limit)
+
+    cur.execute(f"SELECT question, answer FROM faqs WHERE {conditions} LIMIT %s", params)
+    rows = cur.fetchall()
+    cur.close()
+    conn.close()
+
+    return [{"question": r["question"], "answer": r["answer"]} for r in rows]
+
+
 @app.get("/classify-message")
 async def classify_message(model_name, prompt):
     api_key = os.getenv("GEMINI_API_KEY")
@@ -82,6 +110,9 @@ async def classify_message(model_name, prompt):
 
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
     headers = {"Content-Type": "application/json"}
+
+    faqs = get_relevant_faqs(prompt)
+    faq_context = "\n".join([f"Q: {faq['question']}\nA: {faq['answer']}" for faq in faqs]) if faqs else "No relevant FAQ entries found."
     
     payload = {
         "contents": [{"parts": [{"text": prompt}]}],
@@ -91,7 +122,10 @@ async def classify_message(model_name, prompt):
                     "You are a message classifier. Classify the user's message into exactly one "
                     "of these categories: question, statement, greeting, request. "
                     "Also give your confidence in that classification, from 0 to 1."
-                    "Finally, respond to the message in a helpful and friendly manner, but do not include that response in your classification output."
+                    "Use the FAQ entries below as your "
+                    "primary source of truth if they're relevant. If none of them answer the "
+                    "question, say so and answer from your own knowledge, making clear that "
+                    "it isn't from the FAQ.\n\nFAQ entries:\n" + faq_context 
                 )
             }]
         },
