@@ -1,0 +1,43 @@
+services:
+  # --- Frontend (React) ---
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"  # Exposes port 5173 on your host machine to port 80 in the container
+    depends_on:
+      - backend
+
+  # --- Backend (FastAPI) ---
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000" # Exposes FastAPI on port 8000
+    volumes:
+      - ./backend:/app
+      - /app/.venv
+    restart: on-failure
+    environment:
+      - DATABASE_URL=postgresql://postgres:A9352OO3@database:5432/mydatabase
+    depends_on:
+      database:
+        condition: service_healthy
+
+  # --- Database (PostgreSQL) ---
+  database:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: A9352OO3
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d mydatabase"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
