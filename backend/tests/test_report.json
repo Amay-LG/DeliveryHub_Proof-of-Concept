@@ -1,0 +1,1436 @@
+{
+  "timestamp": "2026-10-05T23:06:34.913002+00:00",
+  "total_queries": 90,
+  "passed": 81,
+  "failed": 9,
+  "pass_rate": "90.0%",
+  "summary_by_faq": {
+    "courier": {
+      "total": 25,
+      "passed": 25,
+      "failed": 0,
+      "pass_rate": "100.0%"
+    },
+    "cost": {
+      "total": 25,
+      "passed": 24,
+      "failed": 1,
+      "pass_rate": "96.0%"
+    },
+    "delivery_time": {
+      "total": 25,
+      "passed": 18,
+      "failed": 7,
+      "pass_rate": "72.0%"
+    },
+    "off_topic": {
+      "total": 15,
+      "passed": 14,
+      "failed": 1,
+      "pass_rate": "93.3%"
+    }
+  },
+  "failures": [
+    {
+      "index": 47,
+      "query": "How are delivery rates calculated?",
+      "source_faq": "cost",
+      "bot_response": "{\n  \"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"\n}",
+      "verdict": "FAIL",
+      "reason": "Rule check failed: High latency: 21.96s",
+      "facts_found": [],
+      "facts_missing": [
+        "delivery type",
+        "route",
+        "service selected"
+      ],
+      "judge": "rule_based"
+    },
+    {
+      "index": 59,
+      "query": "Is fast delivery really 3 to 5 days?",
+      "source_faq": "delivery_time",
+      "bot_response": "{\"response\": \"Yes, fast delivery takes 3\\u20135 days.\"}",
+      "verdict": "FAIL",
+      "reason": "Rule check failed: High latency: 20.55s",
+      "facts_found": [],
+      "facts_missing": [
+        "Fast delivery takes 3-5 days"
+      ],
+      "judge": "rule_based"
+    },
+    {
+      "index": 61,
+      "query": "shipping speed USA to India",
+      "source_faq": "delivery_time",
+      "bot_response": "{\"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"}",
+      "verdict": "FAIL",
+      "reason": "Rule check failed: High latency: 27.41s",
+      "facts_found": [],
+      "facts_missing": [
+        "Fast: 3-5 days",
+        "Normal: 7-10 days",
+        "Air Cargo: 20 days",
+        "Sea Cargo: 3-4 months"
+      ],
+      "judge": "rule_based"
+    },
+    {
+      "index": 62,
+      "query": "How long for sea cargo?",
+      "source_faq": "delivery_time",
+      "bot_response": "{\n  \"response\": \"Sea Cargo can take up to 3\u20134 months.\"\n}",
+      "verdict": "FAIL",
+      "reason": "Rule check failed: High latency: 17.76s",
+      "facts_found": [],
+      "facts_missing": [
+        "Sea Cargo can take up to 3-4 months"
+      ],
+      "judge": "rule_based"
+    },
+    {
+      "index": 63,
+      "query": "Could you list the delivery days for each method?",
+      "source_faq": "delivery_time",
+      "bot_response": "{\n  \"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"\n}",
+      "verdict": "FAIL",
+      "reason": "Rule check failed: High latency: 19.13s",
+      "facts_found": [],
+      "facts_missing": [
+        "Fast: 3-5 days",
+        "Normal: 7-10 days",
+        "Air Cargo: 20 days",
+        "Sea Cargo: 3-4 months"
+      ],
+      "judge": "rule_based"
+    },
+    {
+      "index": 64,
+      "query": "jaldi delivery ke liye kitne din lagenge?",
+      "source_faq": "delivery_time",
+      "bot_response": "{\"response\": \"Fast delivery takes 3\u20135 days.\"}",
+      "verdict": "FAIL",
+      "reason": "Rule check failed: High latency: 22.72s",
+      "facts_found": [],
+      "facts_missing": [
+        "Fast delivery takes 3-5 days"
+      ],
+      "judge": "rule_based"
+    },
+    {
+      "index": 65,
+      "query": "When will my package arrive if shipped normally?",
+      "source_faq": "delivery_time",
+      "bot_response": "{\n  \"response\": \"Normal delivery takes 7\u201310 days.\"\n}",
+      "verdict": "FAIL",
+      "reason": "Rule check failed: High latency: 20.97s",
+      "facts_found": [],
+      "facts_missing": [
+        "Normal delivery takes 7-10 days"
+      ],
+      "judge": "rule_based"
+    },
+    {
+      "index": 67,
+      "query": "Does air cargo take 20 days?",
+      "source_faq": "delivery_time",
+      "bot_response": "{\"response\": \"Yes, Air Cargo takes around 20 days.\"}",
+      "verdict": "FAIL",
+      "reason": "Rule check failed: High latency: 22.77s",
+      "facts_found": [],
+      "facts_missing": [
+        "Air Cargo takes around 20 days"
+      ],
+      "judge": "rule_based"
+    },
+    {
+      "index": 78,
+      "query": "Hi",
+      "source_faq": "off_topic",
+      "bot_response": "{\"response\": \"Hello! I am DeliveryHub, your international shipping service specializing in parcel delivery between the USA and India. How can I help you today?\"}",
+      "verdict": "FAIL",
+      "reason": "The bot responded with a standard greeting instead of indicating it cannot answer an off-topic query without FAQ data.",
+      "facts_found": [],
+      "facts_missing": [
+        "not in FAQ",
+        "cannot answer"
+      ],
+      "judge": "llm"
+    }
+  ],
+  "all_verdicts": [
+    {
+      "index": 0,
+      "query": "Which courier does DeliveryHub use?",
+      "source_faq": "courier",
+      "bot_response": "{\n  \"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"\n}",
+      "verdict": "PASS",
+      "reason": "The bot accurately identifies FedEx and the USA to India route as expected.",
+      "facts_found": [
+        "FedEx",
+        "USA to India"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 1,
+      "query": "Who is your shipping partner?",
+      "source_faq": "courier",
+      "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+      "verdict": "PASS",
+      "reason": "The bot successfully addresses the shipping partner query by mentioning FedEx.",
+      "facts_found": [
+        "FedEx"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 2,
+      "query": "what delivery company do u guys use for sending stuff to india?",
+      "source_faq": "courier",
+      "bot_response": "{\n  \"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"\n}",
+      "verdict": "PASS",
+      "reason": "All expected facts regarding FedEx and the USA to India route are present.",
+      "facts_found": [
+        "FedEx",
+        "USA to India"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 3,
+      "query": "Koun sa courier service use hota hai?",
+      "source_faq": "courier",
+      "bot_response": "{\n  \"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"\n}",
+      "verdict": "PASS",
+      "reason": "The bot correctly answers the Hindi-transliterated query with the expected courier fact.",
+      "facts_found": [
+        "FedEx"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 4,
+      "query": "Is it DHL or FedEx that brings my package?",
+      "source_faq": "courier",
+      "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+      "verdict": "PASS",
+      "reason": "The bot correctly clarifies that FedEx is used.",
+      "facts_found": [
+        "FedEx"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 5,
+      "query": "Could you please let me know the name of the shipping carrier?",
+      "source_faq": "courier",
+      "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+      "verdict": "PASS",
+      "reason": "The response provides the shipping carrier fact accurately.",
+      "facts_found": [
+        "FedEx"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 6,
+      "query": "fedex?",
+      "source_faq": "courier",
+      "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+      "verdict": "PASS",
+      "reason": "The bot confirms the use of FedEx as requested.",
+      "facts_found": [
+        "FedEx"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 7,
+      "query": "Tell me the delivery partner for USA to India shipments right now.",
+      "source_faq": "courier",
+      "bot_response": "{\n  \"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"\n}",
+      "verdict": "PASS",
+      "reason": "Both expected facts for the route and courier partner are present.",
+      "facts_found": [
+        "FedEx",
+        "USA to India"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 8,
+      "query": "Do you ship using UPS or someone else?",
+      "source_faq": "courier",
+      "bot_response": "{\n  \"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"\n}",
+      "verdict": "PASS",
+      "reason": "The bot correctly specifies FedEx instead of UPS.",
+      "facts_found": [
+        "FedEx"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 9,
+      "query": "Which courier service handles international delivery?",
+      "source_faq": "courier",
+      "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+      "verdict": "PASS",
+      "reason": "The bot properly names FedEx as the courier service.",
+      "facts_found": [
+        "FedEx"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 10,
+      "query": "mera parcel kaunse courier se aayega?",
+      "source_faq": "courier",
+      "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+      "verdict": "PASS",
+      "reason": "The response correctly identifies FedEx as the courier used.",
+      "facts_found": [
+        "FedEx"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 11,
+      "query": "Can you verify if you use FedEx for all US to India orders?",
+      "source_faq": "courier",
+      "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+      "verdict": "PASS",
+      "reason": "The response accurately covers both FedEx and USA to India delivery.",
+      "facts_found": [
+        "FedEx",
+        "USA to India"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 12,
+      "query": "What logistic company are you partnered with?",
+      "source_faq": "courier",
+      "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+      "verdict": "PASS",
+      "reason": "The response correctly states that FedEx is the partner logistics company.",
+      "facts_found": [
+        "FedEx"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 13,
+      "query": "fexed or fedex?",
+      "source_faq": "courier",
+      "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+      "verdict": "PASS",
+      "reason": "The response correctly answers the query by identifying FedEx.",
+      "facts_found": [
+        "FedEx"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 14,
+      "query": "Hey, just wondering what shipping agency is used.",
+      "source_faq": "courier",
+      "bot_response": "{\n  \"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"\n}",
+      "verdict": "PASS",
+      "reason": "The response properly provides FedEx as the shipping agency.",
+      "facts_found": [
+        "FedEx"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 15,
+      "query": "Who delivers the package in India when sent from America?",
+      "source_faq": "courier",
+      "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+      "verdict": "PASS",
+      "reason": "The response includes both expected facts regarding FedEx and USA to India delivery.",
+      "facts_found": [
+        "FedEx",
+        "USA to India"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 16,
+      "query": "Name of the courier company please.",
+      "source_faq": "courier",
+      "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+      "verdict": "PASS",
+      "reason": "The response correctly names FedEx as the courier company.",
+      "facts_found": [
+        "FedEx"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 17,
+      "query": "Are your shipments handled by FedEx?",
+      "source_faq": "courier",
+      "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+      "verdict": "PASS",
+      "reason": "The response confirms that shipments are handled by FedEx.",
+      "facts_found": [
+        "FedEx"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 18,
+      "query": "kaunsa courier use karte ho",
+      "source_faq": "courier",
+      "bot_response": "{\n  \"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"\n}",
+      "verdict": "PASS",
+      "reason": "The response accurately provides FedEx as the courier used.",
+      "facts_found": [
+        "FedEx"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 19,
+      "query": "Is FedEx the only courier you rely on?",
+      "source_faq": "courier",
+      "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+      "verdict": "PASS",
+      "reason": "The response correctly cites FedEx for the requested information.",
+      "facts_found": [
+        "FedEx"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 20,
+      "query": "Which courier does DeliveryHub use for dispatch?",
+      "source_faq": "courier",
+      "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+      "verdict": "PASS",
+      "reason": "The response successfully mentions the expected fact 'FedEx' and correctly grounds its answer in the FAQ.",
+      "facts_found": [
+        "FedEx"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 21,
+      "query": "transport company name?",
+      "source_faq": "courier",
+      "bot_response": "{\n  \"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"\n}",
+      "verdict": "PASS",
+      "reason": "The response accurately provides the expected fact 'FedEx' in response to the transport company query.",
+      "facts_found": [
+        "FedEx"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 22,
+      "query": "Pls tell me which courier service brings my box.",
+      "source_faq": "courier",
+      "bot_response": "{\n  \"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"\n}",
+      "verdict": "PASS",
+      "reason": "The response correctly identifies 'FedEx' as the courier service.",
+      "facts_found": [
+        "FedEx"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 23,
+      "query": "What is the name of the postal carrier?",
+      "source_faq": "courier",
+      "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+      "verdict": "PASS",
+      "reason": "The response correctly contains the expected fact 'FedEx'.",
+      "facts_found": [
+        "FedEx"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 24,
+      "query": "Tell me the courier company name.",
+      "source_faq": "courier",
+      "bot_response": "{\n  \"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"\n}",
+      "verdict": "PASS",
+      "reason": "The response successfully provides the expected fact 'FedEx'.",
+      "facts_found": [
+        "FedEx"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 25,
+      "query": "How is the shipping cost calculated?",
+      "source_faq": "cost",
+      "bot_response": "{\n  \"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"\n}",
+      "verdict": "PASS",
+      "reason": "The response includes all expected facts regarding shipping cost calculation.",
+      "facts_found": [
+        "delivery type",
+        "route",
+        "service selected"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 26,
+      "query": "What makes up the shipping price?",
+      "source_faq": "cost",
+      "bot_response": "{\n  \"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"\n}",
+      "verdict": "PASS",
+      "reason": "All expected facts about shipping price components are present in the response.",
+      "facts_found": [
+        "delivery type",
+        "route",
+        "service selected"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 27,
+      "query": "how much will it cost me and why?",
+      "source_faq": "cost",
+      "bot_response": "{\"response\": \"At DeliveryHub, shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"}",
+      "verdict": "PASS",
+      "reason": "The response accurately covers delivery type, route, and service selected.",
+      "facts_found": [
+        "delivery type",
+        "route",
+        "service selected"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 28,
+      "query": "Shipping charges kaise calculate hote hain?",
+      "source_faq": "cost",
+      "bot_response": "{\n  \"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"\n}",
+      "verdict": "PASS",
+      "reason": "The response successfully answers the Hinglish query by including all expected cost facts.",
+      "facts_found": [
+        "delivery type",
+        "route",
+        "service selected"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 29,
+      "query": "Can you explain how prices are determined?",
+      "source_faq": "cost",
+      "bot_response": "{\"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"}",
+      "verdict": "PASS",
+      "reason": "The response includes all required facts explaining how prices are determined.",
+      "facts_found": [
+        "delivery type",
+        "route",
+        "service selected"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 30,
+      "query": "Is the price shown before I pay?",
+      "source_faq": "cost",
+      "bot_response": "{\"response\": \"Yes, the price and delivery time are shown instantly before confirmation. Shipping cost is calculated based on the delivery type, route, and service selected.\"}",
+      "verdict": "PASS",
+      "reason": "The response accurately includes the expected fact that the price is shown instantly before confirmation.",
+      "facts_found": [
+        "shown instantly before confirmation"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 31,
+      "query": "cost?",
+      "source_faq": "cost",
+      "bot_response": "{\"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"}",
+      "verdict": "PASS",
+      "reason": "The response includes all expected facts regarding the calculation of shipping costs.",
+      "facts_found": [
+        "delivery type",
+        "route",
+        "service selected"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 32,
+      "query": "What factors determine the shipping fee?",
+      "source_faq": "cost",
+      "bot_response": "{\"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"}",
+      "verdict": "PASS",
+      "reason": "The response successfully covers all the determining factors for shipping fees.",
+      "facts_found": [
+        "delivery type",
+        "route",
+        "service selected"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 33,
+      "query": "Will I see the cost upfront before confirming?",
+      "source_faq": "cost",
+      "bot_response": "{\n  \"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"\n}",
+      "verdict": "PASS",
+      "reason": "The response correctly mentions that the price and delivery time are shown instantly before confirmation.",
+      "facts_found": [
+        "shown instantly before confirmation"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 34,
+      "query": "How do you guys charge for shipping packages?",
+      "source_faq": "cost",
+      "bot_response": "{\"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"}",
+      "verdict": "PASS",
+      "reason": "All expected facts explaining how shipping is charged are present in the response.",
+      "facts_found": [
+        "delivery type",
+        "route",
+        "service selected"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 35,
+      "query": "shipping rate kaise decide hota hai?",
+      "source_faq": "cost",
+      "bot_response": "{\"response\": \"At DeliveryHub, shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"}",
+      "verdict": "PASS",
+      "reason": "The chatbot accurately responds to the Hindi-English query with all expected pricing factors.",
+      "facts_found": [
+        "delivery type",
+        "route",
+        "service selected"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 36,
+      "query": "Could you tell me how shipping prices are worked out?",
+      "source_faq": "cost",
+      "bot_response": "{\"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"}",
+      "verdict": "PASS",
+      "reason": "The response clearly outlines how shipping prices are calculated using the expected facts.",
+      "facts_found": [
+        "delivery type",
+        "route",
+        "service selected"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 37,
+      "query": "price calculation details please",
+      "source_faq": "cost",
+      "bot_response": "{\"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"}",
+      "verdict": "PASS",
+      "reason": "The response provides the requested price calculation details accurately based on FAQ data.",
+      "facts_found": [
+        "delivery type",
+        "route",
+        "service selected"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 38,
+      "query": "Are prices displayed instantly?",
+      "source_faq": "cost",
+      "bot_response": "{\"response\": \"Yes, the price and delivery time are shown instantly before confirmation.\"}",
+      "verdict": "PASS",
+      "reason": "The response confirms that prices are displayed instantly before confirmation as expected.",
+      "facts_found": [
+        "shown instantly before confirmation"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 39,
+      "query": "Why is my shipping price different based on route?",
+      "source_faq": "cost",
+      "bot_response": "{\"response\": \"At DeliveryHub, shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"}",
+      "verdict": "PASS",
+      "reason": "The response includes all expected facts to address why route impacts shipping costs.",
+      "facts_found": [
+        "route",
+        "delivery type",
+        "service selected"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 40,
+      "query": "Tell me about shipping fees and calculation.",
+      "source_faq": "cost",
+      "bot_response": "{\n  \"response\": \"At DeliveryHub, shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"\n}",
+      "verdict": "PASS",
+      "reason": "All expected facts were present, well-grounded in FAQ, and response accurately addresses shipping fees.",
+      "facts_found": [
+        "delivery type",
+        "route",
+        "service selected"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 41,
+      "query": "How is freight cost computed?",
+      "source_faq": "cost",
+      "bot_response": "{\n  \"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"\n}",
+      "verdict": "PASS",
+      "reason": "All expected facts about freight cost computation were successfully included.",
+      "facts_found": [
+        "delivery type",
+        "route",
+        "service selected"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 42,
+      "query": "kharcha kaise nikalta hai shipping ka?",
+      "source_faq": "cost",
+      "bot_response": "{\"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"}",
+      "verdict": "PASS",
+      "reason": "Multilingual query (Hindi-English blend) was answered with all required facts.",
+      "facts_found": [
+        "delivery type",
+        "route",
+        "service selected"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 43,
+      "query": "Does service selected affect the total shipping cost?",
+      "source_faq": "cost",
+      "bot_response": "{\"response\": \"At DeliveryHub, shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"}",
+      "verdict": "PASS",
+      "reason": "All expected facts present, correctly addressing the query on service selected.",
+      "facts_found": [
+        "service selected",
+        "delivery type",
+        "route"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 44,
+      "query": "Show me cost details and when price is shown.",
+      "source_faq": "cost",
+      "bot_response": "{\"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"}",
+      "verdict": "PASS",
+      "reason": "All expected facts including timing of price display and calculation factors were found.",
+      "facts_found": [
+        "shown instantly before confirmation",
+        "delivery type",
+        "route"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 45,
+      "query": "What's the pricing logic?",
+      "source_faq": "cost",
+      "bot_response": "{\n  \"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"\n}",
+      "verdict": "PASS",
+      "reason": "Response accurately outlines the pricing logic using all expected facts.",
+      "facts_found": [
+        "delivery type",
+        "route",
+        "service selected"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 46,
+      "query": "Can I know the cost before order confirmation?",
+      "source_faq": "cost",
+      "bot_response": "{\n  \"response\": \"At DeliveryHub, the shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"\n}",
+      "verdict": "PASS",
+      "reason": "The expected fact regarding cost being shown before confirmation was successfully found.",
+      "facts_found": [
+        "shown instantly before confirmation"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 47,
+      "query": "How are delivery rates calculated?",
+      "source_faq": "cost",
+      "bot_response": "{\n  \"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"\n}",
+      "verdict": "FAIL",
+      "reason": "Rule check failed: High latency: 21.96s",
+      "facts_found": [],
+      "facts_missing": [
+        "delivery type",
+        "route",
+        "service selected"
+      ],
+      "judge": "rule_based"
+    },
+    {
+      "index": 48,
+      "query": "shipping cost info",
+      "source_faq": "cost",
+      "bot_response": "{\n  \"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"\n}",
+      "verdict": "PASS",
+      "reason": "Short query successfully answered with all required cost calculation facts.",
+      "facts_found": [
+        "delivery type",
+        "route",
+        "service selected"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 49,
+      "query": "Please explain how you calculate freight charges.",
+      "source_faq": "cost",
+      "bot_response": "{\"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"}",
+      "verdict": "PASS",
+      "reason": "Freight charge explanation correctly contains all expected facts.",
+      "facts_found": [
+        "delivery type",
+        "route",
+        "service selected"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 50,
+      "query": "How long does delivery take from USA to India?",
+      "source_faq": "delivery_time",
+      "bot_response": "{\"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"}",
+      "verdict": "PASS",
+      "reason": "All expected delivery timeframes were accurately captured in the response.",
+      "facts_found": [
+        "Fast: 3-5 days",
+        "Normal: 7-10 days",
+        "Air Cargo: 20 days",
+        "Sea Cargo: 3-4 months"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 51,
+      "query": "What are the transit times for shipping to India from the US?",
+      "source_faq": "delivery_time",
+      "bot_response": "{\n  \"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"\n}",
+      "verdict": "PASS",
+      "reason": "All expected facts were present in the response and properly grounded in the FAQ.",
+      "facts_found": [
+        "Fast: 3-5 days",
+        "Normal: 7-10 days",
+        "Air Cargo: 20 days",
+        "Sea Cargo: 3-4 months"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 52,
+      "query": "kitna time lagega parcel pahunchne mein USA se India?",
+      "source_faq": "delivery_time",
+      "bot_response": "{\"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"}",
+      "verdict": "PASS",
+      "reason": "The bot correctly handled the Hinglish query and returned all expected transit time facts.",
+      "facts_found": [
+        "Fast: 3-5 days",
+        "Normal: 7-10 days",
+        "Air Cargo: 20 days",
+        "Sea Cargo: 3-4 months"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 53,
+      "query": "How many days for sea cargo vs fast delivery?",
+      "source_faq": "delivery_time",
+      "bot_response": "{\n  \"response\": \"At DeliveryHub, Fast delivery takes 3\u20135 days, while Sea Cargo can take up to 3\u20134 months.\"\n}",
+      "verdict": "PASS",
+      "reason": "The bot accurately compared sea cargo and fast delivery times as requested.",
+      "facts_found": [
+        "Fast: 3-5 days",
+        "Sea Cargo: 3-4 months"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 54,
+      "query": "Can you tell me the delivery duration for normal shipping?",
+      "source_faq": "delivery_time",
+      "bot_response": "{\"response\": \"Normal delivery takes 7\u201310 days.\"}",
+      "verdict": "PASS",
+      "reason": "The response correctly states the normal shipping delivery duration.",
+      "facts_found": [
+        "Normal delivery takes 7-10 days"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 55,
+      "query": "America se India saman jaane me kitne din lagte hain?",
+      "source_faq": "delivery_time",
+      "bot_response": "{\n  \"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"\n}",
+      "verdict": "PASS",
+      "reason": "The bot accurately provided all transit times for the Hindi/Hinglish query.",
+      "facts_found": [
+        "Fast: 3-5 days",
+        "Normal: 7-10 days",
+        "Air Cargo: around 20 days",
+        "Sea Cargo: 3-4 months"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 56,
+      "query": "delivery time?",
+      "source_faq": "delivery_time",
+      "bot_response": "{\n  \"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"\n}",
+      "verdict": "PASS",
+      "reason": "A brief query was handled by supplying the complete set of delivery times.",
+      "facts_found": [
+        "Fast: 3-5 days",
+        "Normal: 7-10 days",
+        "Air Cargo: 20 days",
+        "Sea Cargo: 3-4 months"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 57,
+      "query": "How long does air cargo take?",
+      "source_faq": "delivery_time",
+      "bot_response": "{\"response\": \"Air Cargo takes around 20 days.\"}",
+      "verdict": "PASS",
+      "reason": "The response correctly specifies the duration for air cargo.",
+      "facts_found": [
+        "Air Cargo takes around 20 days"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 58,
+      "query": "Please provide all shipping speeds from USA to India.",
+      "source_faq": "delivery_time",
+      "bot_response": "{\n  \"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"\n}",
+      "verdict": "PASS",
+      "reason": "All shipping speeds were successfully listed.",
+      "facts_found": [
+        "Fast: 3-5 days",
+        "Normal: 7-10 days",
+        "Air Cargo: 20 days",
+        "Sea Cargo: 3-4 months"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 59,
+      "query": "Is fast delivery really 3 to 5 days?",
+      "source_faq": "delivery_time",
+      "bot_response": "{\"response\": \"Yes, fast delivery takes 3\\u20135 days.\"}",
+      "verdict": "FAIL",
+      "reason": "Rule check failed: High latency: 20.55s",
+      "facts_found": [],
+      "facts_missing": [
+        "Fast delivery takes 3-5 days"
+      ],
+      "judge": "rule_based"
+    },
+    {
+      "index": 60,
+      "query": "What is the fastest option and how long does it take?",
+      "source_faq": "delivery_time",
+      "bot_response": "{\"response\": \"Fast delivery takes 3\u20135 days.\"}",
+      "verdict": "PASS",
+      "reason": "The bot correctly identified and answered regarding the fastest option.",
+      "facts_found": [
+        "Fast delivery takes 3-5 days"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 61,
+      "query": "shipping speed USA to India",
+      "source_faq": "delivery_time",
+      "bot_response": "{\"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"}",
+      "verdict": "FAIL",
+      "reason": "Rule check failed: High latency: 27.41s",
+      "facts_found": [],
+      "facts_missing": [
+        "Fast: 3-5 days",
+        "Normal: 7-10 days",
+        "Air Cargo: 20 days",
+        "Sea Cargo: 3-4 months"
+      ],
+      "judge": "rule_based"
+    },
+    {
+      "index": 62,
+      "query": "How long for sea cargo?",
+      "source_faq": "delivery_time",
+      "bot_response": "{\n  \"response\": \"Sea Cargo can take up to 3\u20134 months.\"\n}",
+      "verdict": "FAIL",
+      "reason": "Rule check failed: High latency: 17.76s",
+      "facts_found": [],
+      "facts_missing": [
+        "Sea Cargo can take up to 3-4 months"
+      ],
+      "judge": "rule_based"
+    },
+    {
+      "index": 63,
+      "query": "Could you list the delivery days for each method?",
+      "source_faq": "delivery_time",
+      "bot_response": "{\n  \"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"\n}",
+      "verdict": "FAIL",
+      "reason": "Rule check failed: High latency: 19.13s",
+      "facts_found": [],
+      "facts_missing": [
+        "Fast: 3-5 days",
+        "Normal: 7-10 days",
+        "Air Cargo: 20 days",
+        "Sea Cargo: 3-4 months"
+      ],
+      "judge": "rule_based"
+    },
+    {
+      "index": 64,
+      "query": "jaldi delivery ke liye kitne din lagenge?",
+      "source_faq": "delivery_time",
+      "bot_response": "{\"response\": \"Fast delivery takes 3\u20135 days.\"}",
+      "verdict": "FAIL",
+      "reason": "Rule check failed: High latency: 22.72s",
+      "facts_found": [],
+      "facts_missing": [
+        "Fast delivery takes 3-5 days"
+      ],
+      "judge": "rule_based"
+    },
+    {
+      "index": 65,
+      "query": "When will my package arrive if shipped normally?",
+      "source_faq": "delivery_time",
+      "bot_response": "{\n  \"response\": \"Normal delivery takes 7\u201310 days.\"\n}",
+      "verdict": "FAIL",
+      "reason": "Rule check failed: High latency: 20.97s",
+      "facts_found": [],
+      "facts_missing": [
+        "Normal delivery takes 7-10 days"
+      ],
+      "judge": "rule_based"
+    },
+    {
+      "index": 66,
+      "query": "transit duration from US to India please",
+      "source_faq": "delivery_time",
+      "bot_response": "{\n  \"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"\n}",
+      "verdict": "PASS",
+      "reason": "The transit duration query was fully answered with all expected options.",
+      "facts_found": [
+        "Fast: 3-5 days",
+        "Normal: 7-10 days",
+        "Air Cargo: 20 days",
+        "Sea Cargo: 3-4 months"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 67,
+      "query": "Does air cargo take 20 days?",
+      "source_faq": "delivery_time",
+      "bot_response": "{\"response\": \"Yes, Air Cargo takes around 20 days.\"}",
+      "verdict": "FAIL",
+      "reason": "Rule check failed: High latency: 22.77s",
+      "facts_found": [],
+      "facts_missing": [
+        "Air Cargo takes around 20 days"
+      ],
+      "judge": "rule_based"
+    },
+    {
+      "index": 68,
+      "query": "Tell me how many days normal shipping takes.",
+      "source_faq": "delivery_time",
+      "bot_response": "{\"response\": \"Normal delivery takes 7\u201310 days.\"}",
+      "verdict": "PASS",
+      "reason": "The bot accurately states the normal delivery time as expected.",
+      "facts_found": [
+        "Normal delivery takes 7-10 days"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 69,
+      "query": "How long does it take by ship (sea cargo)?",
+      "source_faq": "delivery_time",
+      "bot_response": "{\"response\": \"Sea Cargo can take up to 3\u20134 months.\"}",
+      "verdict": "PASS",
+      "reason": "The bot correctly answers with the sea cargo delivery time.",
+      "facts_found": [
+        "Sea Cargo can take up to 3-4 months"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 70,
+      "query": "US se India delivery time kya hai?",
+      "source_faq": "delivery_time",
+      "bot_response": "{\n  \"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"\n}",
+      "verdict": "PASS",
+      "reason": "The bot covers all expected delivery time facts accurately.",
+      "facts_found": [
+        "Fast: 3-5 days",
+        "Normal: 7-10 days",
+        "Air Cargo: 20 days",
+        "Sea Cargo: 3-4 months"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 71,
+      "query": "What are the delivery estimates for all services?",
+      "source_faq": "delivery_time",
+      "bot_response": "{\n  \"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"\n}",
+      "verdict": "PASS",
+      "reason": "The bot lists all delivery estimates as requested.",
+      "facts_found": [
+        "Fast: 3-5 days",
+        "Normal: 7-10 days",
+        "Air Cargo: 20 days",
+        "Sea Cargo: 3-4 months"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 72,
+      "query": "Is normal delivery quicker than air cargo?",
+      "source_faq": "delivery_time",
+      "bot_response": "{\"response\": \"Yes, Normal delivery takes 7\u201310 days, whereas Air Cargo takes around 20 days.\"}",
+      "verdict": "PASS",
+      "reason": "The bot correctly provides both facts to compare normal delivery and air cargo.",
+      "facts_found": [
+        "Normal delivery takes 7-10 days",
+        "Air Cargo takes around 20 days"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 73,
+      "query": "Delivery timeline info needed.",
+      "source_faq": "delivery_time",
+      "bot_response": "{\n  \"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"\n}",
+      "verdict": "PASS",
+      "reason": "The bot provides all timeline details successfully.",
+      "facts_found": [
+        "Fast: 3-5 days",
+        "Normal: 7-10 days",
+        "Air Cargo: 20 days",
+        "Sea Cargo: 3-4 months"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 74,
+      "query": "How long does shipping take?",
+      "source_faq": "delivery_time",
+      "bot_response": "{\n  \"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"\n}",
+      "verdict": "PASS",
+      "reason": "The bot comprehensively lists all shipping durations.",
+      "facts_found": [
+        "Fast: 3-5 days",
+        "Normal: 7-10 days",
+        "Air Cargo: 20 days",
+        "Sea Cargo: 3-4 months"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 75,
+      "query": "Can I return a package?",
+      "source_faq": "off_topic",
+      "bot_response": "{\n  \"response\": \"The answer is not in the FAQ and I cannot answer it. Please contact support@deliveryhub.com.\"\n}",
+      "verdict": "PASS",
+      "reason": "The bot correctly handles the off-topic query by stating it cannot answer.",
+      "facts_found": [
+        "not in FAQ",
+        "cannot answer"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 76,
+      "query": "Do you ship to Europe?",
+      "source_faq": "off_topic",
+      "bot_response": "{\"response\": \"The answer is not in the FAQ and I cannot answer it. Please reach out to support@deliveryhub.com for assistance.\"}",
+      "verdict": "PASS",
+      "reason": "The bot successfully deflects the off-topic query.",
+      "facts_found": [
+        "not in FAQ",
+        "cannot answer"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 77,
+      "query": "What's the weather today?",
+      "source_faq": "off_topic",
+      "bot_response": "{\n  \"response\": \"The answer is not in the FAQ and I cannot answer it. Please contact support@deliveryhub.com.\"\n}",
+      "verdict": "PASS",
+      "reason": "The bot correctly identifies that the weather query is outside the FAQ scope.",
+      "facts_found": [
+        "not in FAQ",
+        "cannot answer"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 78,
+      "query": "Hi",
+      "source_faq": "off_topic",
+      "bot_response": "{\"response\": \"Hello! I am DeliveryHub, your international shipping service specializing in parcel delivery between the USA and India. How can I help you today?\"}",
+      "verdict": "FAIL",
+      "reason": "The bot responded with a standard greeting instead of indicating it cannot answer an off-topic query without FAQ data.",
+      "facts_found": [],
+      "facts_missing": [
+        "not in FAQ",
+        "cannot answer"
+      ],
+      "judge": "llm"
+    },
+    {
+      "index": 79,
+      "query": "asdfghjkl",
+      "source_faq": "off_topic",
+      "bot_response": "{\n  \"response\": \"The answer to this question is not in the FAQ, and I cannot answer it. Please reach out to support@deliveryhub.com for further assistance.\"\n}",
+      "verdict": "PASS",
+      "reason": "The bot correctly stated that the answer is not in the FAQ and cannot be answered.",
+      "facts_found": [
+        "not in FAQ",
+        "cannot answer"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 80,
+      "query": "Do you offer cash on delivery?",
+      "source_faq": "off_topic",
+      "bot_response": "{\"response\": \"The answer is not in the FAQ and I cannot answer it. Please reach out to support@deliveryhub.com for assistance.\"}",
+      "verdict": "PASS",
+      "reason": "The bot correctly indicated it cannot answer off-topic queries not found in the FAQ.",
+      "facts_found": [
+        "not in FAQ",
+        "cannot answer"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 81,
+      "query": "What is the capital of France?",
+      "source_faq": "off_topic",
+      "bot_response": "{\n  \"response\": \"The answer is not in the FAQ and I cannot answer it. Please reach out to support@deliveryhub.com for further assistance.\"\n}",
+      "verdict": "PASS",
+      "reason": "The bot correctly stated that the answer is not in the FAQ and cannot answer.",
+      "facts_found": [
+        "not in FAQ",
+        "cannot answer"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 82,
+      "query": "Can I change my delivery address after booking?",
+      "source_faq": "off_topic",
+      "bot_response": "{\"response\": \"The answer is not in the FAQ and I cannot answer it. Please contact support@deliveryhub.com for assistance.\"}",
+      "verdict": "PASS",
+      "reason": "The bot properly handled the off-topic query by stating it cannot answer.",
+      "facts_found": [
+        "not in FAQ",
+        "cannot answer"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 83,
+      "query": "Hello bot, how are you?",
+      "source_faq": "off_topic",
+      "bot_response": "{\"response\": \"The answer is not in the FAQ and I cannot answer it. Please contact support at support@deliveryhub.com.\"}",
+      "verdict": "PASS",
+      "reason": "The bot correctly stated it cannot answer since the information is not in the FAQ.",
+      "facts_found": [
+        "not in FAQ",
+        "cannot answer"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 84,
+      "query": "Do you have a mobile app?",
+      "source_faq": "off_topic",
+      "bot_response": "{\"response\": \"The answer is not in the FAQ and I cannot answer it. Please contact support@deliveryhub.com for assistance.\"}",
+      "verdict": "PASS",
+      "reason": "The bot appropriately responded that the answer is not in the FAQ and cannot be answered.",
+      "facts_found": [
+        "not in FAQ",
+        "cannot answer"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 85,
+      "query": "Are there any customs duties for shipping to India?",
+      "source_faq": "off_topic",
+      "bot_response": "{\n  \"response\": \"The answer is not in the FAQ and I cannot answer it. Please contact support@deliveryhub.com.\"\n}",
+      "verdict": "PASS",
+      "reason": "The bot correctly identified that the query cannot be answered from the FAQ.",
+      "facts_found": [
+        "not in FAQ",
+        "cannot answer"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 86,
+      "query": "Tell me a joke.",
+      "source_faq": "off_topic",
+      "bot_response": "{\n  \"response\": \"The answer to your question is not in the FAQ and I cannot answer it. Please reach out to support@deliveryhub.com for further assistance.\"\n}",
+      "verdict": "PASS",
+      "reason": "The bot correctly handled the off-topic joke request with the standard fallback response.",
+      "facts_found": [
+        "not in FAQ",
+        "cannot answer"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 87,
+      "query": "How do I cancel my order?",
+      "source_faq": "off_topic",
+      "bot_response": "{\"response\": \"The answer is not in the FAQ and I cannot answer it. Please contact support at support@deliveryhub.com.\"}",
+      "verdict": "PASS",
+      "reason": "The bot properly applied off-topic handling by stating the answer is not in the FAQ.",
+      "facts_found": [
+        "not in FAQ",
+        "cannot answer"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 88,
+      "query": "1234567890",
+      "source_faq": "off_topic",
+      "bot_response": "{\n  \"response\": \"The answer is not in the FAQ and I cannot answer it. Please contact support at support@deliveryhub.com.\"\n}",
+      "verdict": "PASS",
+      "reason": "The bot correctly identified the query as off-topic and stated that it cannot answer, aligning with the expected facts.",
+      "facts_found": [
+        "not in FAQ",
+        "cannot answer"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    },
+    {
+      "index": 89,
+      "query": "What is your customer support phone number?",
+      "source_faq": "off_topic",
+      "bot_response": "{\n  \"response\": \"The answer is not in the FAQ and I cannot answer it. Please contact us at support@deliveryhub.com.\"\n}",
+      "verdict": "PASS",
+      "reason": "The bot successfully handled the off-topic query by stating it is not in the FAQ and cannot answer.",
+      "facts_found": [
+        "not in FAQ",
+        "cannot answer"
+      ],
+      "facts_missing": [],
+      "judge": "llm"
+    }
+  ]
+}
