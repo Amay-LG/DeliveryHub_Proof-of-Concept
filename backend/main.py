@@ -4,12 +4,25 @@ import asyncio
 import json
 import psycopg2
 import psycopg2.extras
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
 
+# Import initialization functions from k_base.py
+from k_base import init_db, seed_faqs
+
 load_dotenv()
-app = FastAPI()
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Runs once when FastAPI starts up, before accepting incoming requests
+    init_db()
+    seed_faqs()
+    yield
+    # Code placed here runs on server shutdown (if needed)
+
+app = FastAPI(lifespan=lifespan)
 DATABASE_URL = os.getenv("DATABASE_URL")
 
 app.add_middleware(
@@ -19,82 +32,26 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+from pgvector.psycopg2 import register_vector
 
-@app.get("/test-models")
-async def evaluate_gemini_models():
-    api_key = os.getenv("GEMINI_API_KEY")
-    if not api_key:
-        return {"error": "API key is missing"}
+NUM_FAQS_TO_MATCH = 3
 
-    url1 = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key={api_key}"
-    url2 = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key={api_key}"
-    
-    headers = {"Content-Type": "application/json"}
-    payload = {
-        "contents": [{"parts": [{"text": "Hello! Please reply with your best joke."}]}]
-    }
-
-    timeout_settings = httpx.Timeout(30.0)
-    
-    async with httpx.AsyncClient(timeout=timeout_settings) as client:
-        task1 = client.post(url1, headers=headers, json=payload)
-        task2 = client.post(url2, headers=headers, json=payload)
-        
-        response1, response2 = await asyncio.gather(task1, task2)
-        
-    return {
-        "model_3_5_lite": {
-            "status": response1.status_code, 
-            "latency_seconds": response1.elapsed.total_seconds(), # Extracts the exact time
-            "data": response1.json()["candidates"][0]["content"]["parts"][0]["text"]
-        },
-        "model_3_6_flash": {
-            "status": response2.status_code, 
-            "latency_seconds": response2.elapsed.total_seconds(), # Extracts the exact time
-            "data": response2.json()["candidates"][0]["content"]["parts"][0]["text"]
-        }
-    }
-
-@app.get("/generate-message")
-async def get_message_from_gemini(model_name, prompt):
-    api_key = os.getenv("GEMINI_API_KEY")
-    if not api_key:
-        return {"error": "API key is missing"}
-
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
-    headers = {"Content-Type": "application/json"}
-    payload = {
-        "contents": [{"parts": [{"text": prompt}]}]
-    }
-
-    timeout_settings = httpx.Timeout(30.0)
-    
-    async with httpx.AsyncClient(timeout=timeout_settings) as client:
-        response = await client.post(url, headers=headers, json=payload)
-        
-    return {
-        "status": response.status_code,
-        "latency_seconds": response.elapsed.total_seconds(),
-        "data": response.json()["candidates"][0]["content"]["parts"][0]["text"]
-    }
-
-def get_relevant_faqs(prompt: str, limit: int = 3):
-    conn = psycopg2.connect(DATABASE_URL)
-    cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
-
-    keywords = [w for w in prompt.lower().split() if len(w) > 3]
-    if not keywords:
-        cur.close()
-        conn.close()
+def get_relevant_faqs(prompt: str, limit: int = NUM_FAQS_TO_MATCH):
+    try:
+        from k_base import get_embedding
+        emb = get_embedding(prompt)
+    except Exception as e:
+        print(f"Error getting embedding: {e}")
         return []
 
-    conditions = " OR ".join(["question ILIKE %s OR answer ILIKE %s"] * len(keywords))
-    params = []
-    for kw in keywords:
-        params.extend([f"%{kw}%", f"%{kw}%"])
-    params.append(limit)
+    conn = psycopg2.connect(DATABASE_URL)
+    register_vector(conn)
+    cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
 
-    cur.execute(f"SELECT question, answer FROM faqs WHERE {conditions} LIMIT %s", params)
+    cur.execute(
+        "SELECT question, answer FROM faqs ORDER BY embedded <=> %s::vector LIMIT %s", 
+        (emb, limit)
+    )
     rows = cur.fetchall()
     cur.close()
     conn.close()
@@ -159,4 +116,62 @@ async def classify_message(model_name, prompt):
         "category": classification["category"],
         "confidence": classification["confidence"],
         "response": classification["response"]
+    }
+
+# @app.get("/test-models")
+# async def evaluate_gemini_models():
+#     api_key = os.getenv("GEMINI_API_KEY")
+#     if not api_key:
+#         return {"error": "API key is missing"}
+
+#     url1 = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key={api_key}"
+#     url2 = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key={api_key}"
+    
+#     headers = {"Content-Type": "application/json"}
+#     payload = {
+#         "contents": [{"parts": [{"text": "Hello! Please reply with your best joke."}]}]
+#     }
+
+#     timeout_settings = httpx.Timeout(30.0)
+    
+#     async with httpx.AsyncClient(timeout=timeout_settings) as client:
+#         task1 = client.post(url1, headers=headers, json=payload)
+#         task2 = client.post(url2, headers=headers, json=payload)
+        
+#         response1, response2 = await asyncio.gather(task1, task2)
+        
+#     return {
+#         "model_3_5_lite": {
+#             "status": response1.status_code, 
+#             "latency_seconds": response1.elapsed.total_seconds(), # Extracts the exact time
+#             "data": response1.json()["candidates"][0]["content"]["parts"][0]["text"]
+#         },
+#         "model_3_6_flash": {
+#             "status": response2.status_code, 
+#             "latency_seconds": response2.elapsed.total_seconds(), # Extracts the exact time
+#             "data": response2.json()["candidates"][0]["content"]["parts"][0]["text"]
+#         }
+#     }
+
+@app.get("/generate-message")
+async def get_message_from_gemini(model_name, prompt):
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        return {"error": "API key is missing"}
+
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
+    headers = {"Content-Type": "application/json"}
+    payload = {
+        "contents": [{"parts": [{"text": prompt}]}]
+    }
+
+    timeout_settings = httpx.Timeout(30.0)
+    
+    async with httpx.AsyncClient(timeout=timeout_settings) as client:
+        response = await client.post(url, headers=headers, json=payload)
+        
+    return {
+        "status": response.status_code,
+        "latency_seconds": response.elapsed.total_seconds(),
+        "data": response.json()["candidates"][0]["content"]["parts"][0]["text"]
     }
