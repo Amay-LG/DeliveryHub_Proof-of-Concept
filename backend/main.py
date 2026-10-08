@@ -32,6 +32,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# pyrefly: ignore [missing-import]
 from pgvector.psycopg2 import register_vector
 
 NUM_FAQS_TO_MATCH = 3
@@ -226,8 +227,10 @@ async def get_message_from_gemini(model_name, prompt):
             "error": True
         }
         
+    raw_response = response_data["candidates"][0]["content"]["parts"][0]["text"]
+
     return {
         "status": response.status_code,
         "latency_seconds": response.elapsed.total_seconds(),
-        "data": response_data["candidates"][0]["content"]["parts"][0]["text"]
+        "response": json.loads(raw_response)['response']
     }

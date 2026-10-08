@@ -3,7 +3,10 @@ services:
   frontend:
     build: ./frontend
     ports:
-      - "5173:5173"  # Exposes port 5173 on your host machine to port 80 in the container
+      - "5173:5173" # Exposes port 5173 on your host machine to port 80 in the container
+    # volumes:
+    #   - ./frontend:/usr/src/app
+    #   - /usr/src/app/node_modules
     depends_on:
       - backend
 
@@ -34,7 +37,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d mydatabase"]
+      test: [ "CMD-SHELL", "pg_isready -U postgres -d mydatabase" ]
       interval: 5s
       timeout: 5s
       retries: 5
