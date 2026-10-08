@@ -1,0 +1,825 @@
+[
+  {
+    "query": "Which courier does DeliveryHub use?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx",
+      "USA to India"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Who is your shipping partner?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "what delivery company do u guys use for sending stuff to india?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx",
+      "USA to India"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Koun sa courier service use hota hai?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Is it DHL or FedEx that brings my package?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Could you please let me know the name of the shipping carrier?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "fedex?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Tell me the delivery partner for USA to India shipments right now.",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx",
+      "USA to India"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Do you ship using UPS or someone else?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Which courier service handles international delivery?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "mera parcel kaunse courier se aayega?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Can you verify if you use FedEx for all US to India orders?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx",
+      "USA to India"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "What logistic company are you partnered with?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "fexed or fedex?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Hey, just wondering what shipping agency is used.",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Who delivers the package in India when sent from America?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx",
+      "USA to India"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Name of the courier company please.",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Are your shipments handled by FedEx?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "kaunsa courier use karte ho",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Is FedEx the only courier you rely on?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Which courier does DeliveryHub use for dispatch?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "transport company name?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Pls tell me which courier service brings my box.",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "What is the name of the postal carrier?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Tell me the courier company name.",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "How is the shipping cost calculated?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "What makes up the shipping price?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "how much will it cost me and why?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Shipping charges kaise calculate hote hain?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Can you explain how prices are determined?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Is the price shown before I pay?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "shown instantly before confirmation"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "cost?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "What factors determine the shipping fee?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Will I see the cost upfront before confirming?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "shown instantly before confirmation"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "How do you guys charge for shipping packages?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "shipping rate kaise decide hota hai?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Could you tell me how shipping prices are worked out?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "price calculation details please",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Are prices displayed instantly?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "shown instantly before confirmation"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Why is my shipping price different based on route?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "route",
+      "delivery type",
+      "service selected"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Tell me about shipping fees and calculation.",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "How is freight cost computed?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "kharcha kaise nikalta hai shipping ka?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Does service selected affect the total shipping cost?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "service selected",
+      "delivery type",
+      "route"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Show me cost details and when price is shown.",
+    "source_faq": "cost",
+    "expected_facts": [
+      "shown instantly before confirmation",
+      "delivery type",
+      "route"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "What's the pricing logic?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Can I know the cost before order confirmation?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "shown instantly before confirmation"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "How are delivery rates calculated?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "shipping cost info",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Please explain how you calculate freight charges.",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "How long does delivery take from USA to India?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Normal: 7-10 days",
+      "Air Cargo: 20 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "What are the transit times for shipping to India from the US?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Normal: 7-10 days",
+      "Air Cargo: 20 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "kitna time lagega parcel pahunchne mein USA se India?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Normal: 7-10 days",
+      "Air Cargo: 20 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "How many days for sea cargo vs fast delivery?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Can you tell me the delivery duration for normal shipping?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Normal delivery takes 7-10 days"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "America se India saman jaane me kitne din lagte hain?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Normal: 7-10 days",
+      "Air Cargo: around 20 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "delivery time?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Normal: 7-10 days",
+      "Air Cargo: 20 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "How long does air cargo take?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Air Cargo takes around 20 days"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Please provide all shipping speeds from USA to India.",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Normal: 7-10 days",
+      "Air Cargo: 20 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Is fast delivery really 3 to 5 days?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast delivery takes 3-5 days"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "What is the fastest option and how long does it take?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast delivery takes 3-5 days"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "shipping speed USA to India",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Normal: 7-10 days",
+      "Air Cargo: 20 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "How long for sea cargo?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Sea Cargo can take up to 3-4 months"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Could you list the delivery days for each method?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Normal: 7-10 days",
+      "Air Cargo: 20 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "jaldi delivery ke liye kitne din lagenge?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast delivery takes 3-5 days"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "When will my package arrive if shipped normally?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Normal delivery takes 7-10 days"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "transit duration from US to India please",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Normal: 7-10 days",
+      "Air Cargo: 20 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Does air cargo take 20 days?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Air Cargo takes around 20 days"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Tell me how many days normal shipping takes.",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Normal delivery takes 7-10 days"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "How long does it take by ship (sea cargo)?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Sea Cargo can take up to 3-4 months"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "US se India delivery time kya hai?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Normal: 7-10 days",
+      "Air Cargo: 20 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "What are the delivery estimates for all services?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Normal: 7-10 days",
+      "Air Cargo: 20 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Is normal delivery quicker than air cargo?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Normal delivery takes 7-10 days",
+      "Air Cargo takes around 20 days"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Delivery timeline info needed.",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Normal: 7-10 days",
+      "Air Cargo: 20 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "How long does shipping take?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Normal: 7-10 days",
+      "Air Cargo: 20 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true
+  },
+  {
+    "query": "Can I return a package?",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false
+  },
+  {
+    "query": "Do you ship to Europe?",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false
+  },
+  {
+    "query": "What's the weather today?",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false
+  },
+  {
+    "query": "Hi",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false
+  },
+  {
+    "query": "asdfghjkl",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false
+  },
+  {
+    "query": "Do you offer cash on delivery?",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false
+  },
+  {
+    "query": "What is the capital of France?",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false
+  },
+  {
+    "query": "Can I change my delivery address after booking?",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false
+  },
+  {
+    "query": "Hello bot, how are you?",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false
+  },
+  {
+    "query": "Do you have a mobile app?",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false
+  },
+  {
+    "query": "Are there any customs duties for shipping to India?",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false
+  },
+  {
+    "query": "Tell me a joke.",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false
+  },
+  {
+    "query": "How do I cancel my order?",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false
+  },
+  {
+    "query": "1234567890",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false
+  },
+  {
+    "query": "What is your customer support phone number?",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false
+  }
+]

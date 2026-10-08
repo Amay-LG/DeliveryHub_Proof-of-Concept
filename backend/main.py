@@ -32,6 +32,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# pyrefly: ignore [missing-import]
 from pgvector.psycopg2 import register_vector
 
 NUM_FAQS_TO_MATCH = 3
@@ -108,7 +109,19 @@ async def classify_message(model_name, prompt):
     async with httpx.AsyncClient(timeout=timeout_settings) as client:
         response = await client.post(url, headers=headers, json=payload)
 
-    result_text = response.json()["candidates"][0]["content"]["parts"][0]["text"]
+    response_data = response.json()
+
+    # Handle Gemini API errors (rate limiting, content filtering, etc.)
+    if "candidates" not in response_data:
+        error_msg = response_data.get("error", {}).get("message", "Unknown Gemini API error")
+        return {
+            "status": response.status_code,
+            "category": "error",
+            "confidence": 0,
+            "response": f"Gemini API error: {error_msg}"
+        }
+
+    result_text = response_data["candidates"][0]["content"]["parts"][0]["text"]
     classification=json.loads(result_text)
 
     return {
@@ -159,19 +172,65 @@ async def get_message_from_gemini(model_name, prompt):
     if not api_key:
         return {"error": "API key is missing"}
 
+    
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
     headers = {"Content-Type": "application/json"}
+    faqs = get_relevant_faqs(prompt)
+    faq_context = "\n".join([f"Q: {faq['question']}\nA: {faq['answer']}" for faq in faqs]) if faqs else "No relevant FAQ entries found."
+    
     payload = {
-        "contents": [{"parts": [{"text": prompt}]}]
+        "contents": [{"parts": [{"text": prompt}]}],
+        "systemInstruction": {
+            "parts": [{
+                "text": (
+                    "You are the official customer service assistant for DeliveryHub, an international shipping service "
+                    "specializing in parcel delivery between the USA and India.\n\n"
+                    "Instructions:\n"
+                    "1. Identity: Always speak as DeliveryHub. Assume all inquiries about shipping partners, rates, or delivery "
+                    "times refer to DeliveryHub. Never state that you are an AI that cannot ship items or ask which company the user means.\n"
+                    "2. Strict Grounding: Rely strictly on the FAQ entries provided below. Do not use outside knowledge or make up rates/timelines.\n"
+                    "3. Out of Scope / Missing Information: If the question cannot be answered using the provided FAQ entries (e.g. customs duties, "
+                    "jokes, order cancellation, mobile app, or off-topic queries), you MUST explicitly state that the answer is not in the FAQ and "
+                    "that you cannot answer it, and direct them to support@deliveryhub.com.\n"
+                    "4. Terse & Broad Inputs: If a user sends short queries (e.g. 'cost?', 'delivery time?', 'transport company name?'), do not ask "
+                    "for order details or clarification. State the relevant policy directly from the FAQ.\n"
+                    "FAQ entries:\n" + faq_context
+                )
+            }]
+        },
+        "generationConfig": {
+            "responseMimeType": "application/json",
+            "responseSchema": {
+                "type": "OBJECT",
+                "properties": {
+                    "response": {"type": "STRING"}
+                },
+                "required": ["response"]
+            }
+        }
     }
 
     timeout_settings = httpx.Timeout(30.0)
     
     async with httpx.AsyncClient(timeout=timeout_settings) as client:
         response = await client.post(url, headers=headers, json=payload)
+
+    response_data = response.json()
+
+    # Handle Gemini API errors (rate limiting, content filtering, etc.)
+    if "candidates" not in response_data:
+        error_msg = response_data.get("error", {}).get("message", "Unknown Gemini API error")
+        return {
+            "status": response.status_code,
+            "latency_seconds": 0,
+            "data": f"Gemini API error: {error_msg}",
+            "error": True
+        }
         
+    raw_response = response_data["candidates"][0]["content"]["parts"][0]["text"]
+
     return {
         "status": response.status_code,
         "latency_seconds": response.elapsed.total_seconds(),
-        "data": response.json()["candidates"][0]["content"]["parts"][0]["text"]
+        "response": json.loads(raw_response)['response']
     }

@@ -1,0 +1,1185 @@
+[
+  {
+    "query": "Which courier does DeliveryHub use?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx",
+      "USA to India"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 0.79,
+    "error": null
+  },
+  {
+    "query": "Who is your shipping partner?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+    "http_status": 200,
+    "latency_seconds": 0.76,
+    "error": null
+  },
+  {
+    "query": "what delivery company do u guys use for sending stuff to india?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx",
+      "USA to India"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 0.96,
+    "error": null
+  },
+  {
+    "query": "Koun sa courier service use hota hai?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 0.89,
+    "error": null
+  },
+  {
+    "query": "Is it DHL or FedEx that brings my package?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+    "http_status": 200,
+    "latency_seconds": 1.73,
+    "error": null
+  },
+  {
+    "query": "Could you please let me know the name of the shipping carrier?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+    "http_status": 200,
+    "latency_seconds": 0.77,
+    "error": null
+  },
+  {
+    "query": "fedex?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+    "http_status": 200,
+    "latency_seconds": 0.76,
+    "error": null
+  },
+  {
+    "query": "Tell me the delivery partner for USA to India shipments right now.",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx",
+      "USA to India"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 1.43,
+    "error": null
+  },
+  {
+    "query": "Do you ship using UPS or someone else?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 2.54,
+    "error": null
+  },
+  {
+    "query": "Which courier service handles international delivery?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+    "http_status": 200,
+    "latency_seconds": 0.68,
+    "error": null
+  },
+  {
+    "query": "mera parcel kaunse courier se aayega?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+    "http_status": 200,
+    "latency_seconds": 0.82,
+    "error": null
+  },
+  {
+    "query": "Can you verify if you use FedEx for all US to India orders?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx",
+      "USA to India"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+    "http_status": 200,
+    "latency_seconds": 4.18,
+    "error": null
+  },
+  {
+    "query": "What logistic company are you partnered with?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+    "http_status": 200,
+    "latency_seconds": 0.79,
+    "error": null
+  },
+  {
+    "query": "fexed or fedex?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+    "http_status": 200,
+    "latency_seconds": 0.75,
+    "error": null
+  },
+  {
+    "query": "Hey, just wondering what shipping agency is used.",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 1.57,
+    "error": null
+  },
+  {
+    "query": "Who delivers the package in India when sent from America?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx",
+      "USA to India"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+    "http_status": 200,
+    "latency_seconds": 13.79,
+    "error": null
+  },
+  {
+    "query": "Name of the courier company please.",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+    "http_status": 200,
+    "latency_seconds": 0.87,
+    "error": null
+  },
+  {
+    "query": "Are your shipments handled by FedEx?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+    "http_status": 200,
+    "latency_seconds": 2.21,
+    "error": null
+  },
+  {
+    "query": "kaunsa courier use karte ho",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 10.82,
+    "error": null
+  },
+  {
+    "query": "Is FedEx the only courier you rely on?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+    "http_status": 200,
+    "latency_seconds": 0.93,
+    "error": null
+  },
+  {
+    "query": "Which courier does DeliveryHub use for dispatch?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+    "http_status": 200,
+    "latency_seconds": 3.98,
+    "error": null
+  },
+  {
+    "query": "transport company name?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 3.05,
+    "error": null
+  },
+  {
+    "query": "Pls tell me which courier service brings my box.",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 0.78,
+    "error": null
+  },
+  {
+    "query": "What is the name of the postal carrier?",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"}",
+    "http_status": 200,
+    "latency_seconds": 0.78,
+    "error": null
+  },
+  {
+    "query": "Tell me the courier company name.",
+    "source_faq": "courier",
+    "expected_facts": [
+      "FedEx"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"DeliveryHub currently uses FedEx for reliable international delivery from USA to India.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 0.87,
+    "error": null
+  },
+  {
+    "query": "How is the shipping cost calculated?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 9.21,
+    "error": null
+  },
+  {
+    "query": "What makes up the shipping price?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 0.76,
+    "error": null
+  },
+  {
+    "query": "how much will it cost me and why?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"At DeliveryHub, shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"}",
+    "http_status": 200,
+    "latency_seconds": 2.0,
+    "error": null
+  },
+  {
+    "query": "Shipping charges kaise calculate hote hain?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 10.01,
+    "error": null
+  },
+  {
+    "query": "Can you explain how prices are determined?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"}",
+    "http_status": 200,
+    "latency_seconds": 0.86,
+    "error": null
+  },
+  {
+    "query": "Is the price shown before I pay?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "shown instantly before confirmation"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"Yes, the price and delivery time are shown instantly before confirmation. Shipping cost is calculated based on the delivery type, route, and service selected.\"}",
+    "http_status": 200,
+    "latency_seconds": 4.36,
+    "error": null
+  },
+  {
+    "query": "cost?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"}",
+    "http_status": 200,
+    "latency_seconds": 0.77,
+    "error": null
+  },
+  {
+    "query": "What factors determine the shipping fee?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"}",
+    "http_status": 200,
+    "latency_seconds": 3.32,
+    "error": null
+  },
+  {
+    "query": "Will I see the cost upfront before confirming?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "shown instantly before confirmation"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 1.13,
+    "error": null
+  },
+  {
+    "query": "How do you guys charge for shipping packages?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"}",
+    "http_status": 200,
+    "latency_seconds": 0.82,
+    "error": null
+  },
+  {
+    "query": "shipping rate kaise decide hota hai?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"At DeliveryHub, shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"}",
+    "http_status": 200,
+    "latency_seconds": 1.09,
+    "error": null
+  },
+  {
+    "query": "Could you tell me how shipping prices are worked out?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"}",
+    "http_status": 200,
+    "latency_seconds": 12.43,
+    "error": null
+  },
+  {
+    "query": "price calculation details please",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"}",
+    "http_status": 200,
+    "latency_seconds": 8.74,
+    "error": null
+  },
+  {
+    "query": "Are prices displayed instantly?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "shown instantly before confirmation"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"Yes, the price and delivery time are shown instantly before confirmation.\"}",
+    "http_status": 200,
+    "latency_seconds": 0.78,
+    "error": null
+  },
+  {
+    "query": "Why is my shipping price different based on route?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "route",
+      "delivery type",
+      "service selected"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"At DeliveryHub, shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"}",
+    "http_status": 200,
+    "latency_seconds": 12.15,
+    "error": null
+  },
+  {
+    "query": "Tell me about shipping fees and calculation.",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"At DeliveryHub, shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 9.02,
+    "error": null
+  },
+  {
+    "query": "How is freight cost computed?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 8.37,
+    "error": null
+  },
+  {
+    "query": "kharcha kaise nikalta hai shipping ka?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"}",
+    "http_status": 200,
+    "latency_seconds": 1.71,
+    "error": null
+  },
+  {
+    "query": "Does service selected affect the total shipping cost?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "service selected",
+      "delivery type",
+      "route"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"At DeliveryHub, shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"}",
+    "http_status": 200,
+    "latency_seconds": 1.49,
+    "error": null
+  },
+  {
+    "query": "Show me cost details and when price is shown.",
+    "source_faq": "cost",
+    "expected_facts": [
+      "shown instantly before confirmation",
+      "delivery type",
+      "route"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"}",
+    "http_status": 200,
+    "latency_seconds": 0.89,
+    "error": null
+  },
+  {
+    "query": "What's the pricing logic?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 3.13,
+    "error": null
+  },
+  {
+    "query": "Can I know the cost before order confirmation?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "shown instantly before confirmation"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"At DeliveryHub, the shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 0.98,
+    "error": null
+  },
+  {
+    "query": "How are delivery rates calculated?",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 21.96,
+    "error": null
+  },
+  {
+    "query": "shipping cost info",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 0.99,
+    "error": null
+  },
+  {
+    "query": "Please explain how you calculate freight charges.",
+    "source_faq": "cost",
+    "expected_facts": [
+      "delivery type",
+      "route",
+      "service selected"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"Shipping cost is calculated based on the delivery type, route, and service selected. The price and delivery time are shown instantly before confirmation.\"}",
+    "http_status": 200,
+    "latency_seconds": 0.84,
+    "error": null
+  },
+  {
+    "query": "How long does delivery take from USA to India?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Normal: 7-10 days",
+      "Air Cargo: 20 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"}",
+    "http_status": 200,
+    "latency_seconds": 2.43,
+    "error": null
+  },
+  {
+    "query": "What are the transit times for shipping to India from the US?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Normal: 7-10 days",
+      "Air Cargo: 20 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 1.74,
+    "error": null
+  },
+  {
+    "query": "kitna time lagega parcel pahunchne mein USA se India?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Normal: 7-10 days",
+      "Air Cargo: 20 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"}",
+    "http_status": 200,
+    "latency_seconds": 0.8,
+    "error": null
+  },
+  {
+    "query": "How many days for sea cargo vs fast delivery?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"At DeliveryHub, Fast delivery takes 3\u20135 days, while Sea Cargo can take up to 3\u20134 months.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 2.62,
+    "error": null
+  },
+  {
+    "query": "Can you tell me the delivery duration for normal shipping?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Normal delivery takes 7-10 days"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"Normal delivery takes 7\u201310 days.\"}",
+    "http_status": 200,
+    "latency_seconds": 3.06,
+    "error": null
+  },
+  {
+    "query": "America se India saman jaane me kitne din lagte hain?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Normal: 7-10 days",
+      "Air Cargo: around 20 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 1.71,
+    "error": null
+  },
+  {
+    "query": "delivery time?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Normal: 7-10 days",
+      "Air Cargo: 20 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 1.5,
+    "error": null
+  },
+  {
+    "query": "How long does air cargo take?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Air Cargo takes around 20 days"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"Air Cargo takes around 20 days.\"}",
+    "http_status": 200,
+    "latency_seconds": 0.8,
+    "error": null
+  },
+  {
+    "query": "Please provide all shipping speeds from USA to India.",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Normal: 7-10 days",
+      "Air Cargo: 20 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 0.79,
+    "error": null
+  },
+  {
+    "query": "Is fast delivery really 3 to 5 days?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast delivery takes 3-5 days"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"Yes, fast delivery takes 3\\u20135 days.\"}",
+    "http_status": 200,
+    "latency_seconds": 20.55,
+    "error": null
+  },
+  {
+    "query": "What is the fastest option and how long does it take?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast delivery takes 3-5 days"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"Fast delivery takes 3\u20135 days.\"}",
+    "http_status": 200,
+    "latency_seconds": 3.02,
+    "error": null
+  },
+  {
+    "query": "shipping speed USA to India",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Normal: 7-10 days",
+      "Air Cargo: 20 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"}",
+    "http_status": 200,
+    "latency_seconds": 27.41,
+    "error": null
+  },
+  {
+    "query": "How long for sea cargo?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Sea Cargo can take up to 3-4 months"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"Sea Cargo can take up to 3\u20134 months.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 17.76,
+    "error": null
+  },
+  {
+    "query": "Could you list the delivery days for each method?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Normal: 7-10 days",
+      "Air Cargo: 20 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 19.13,
+    "error": null
+  },
+  {
+    "query": "jaldi delivery ke liye kitne din lagenge?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast delivery takes 3-5 days"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"Fast delivery takes 3\u20135 days.\"}",
+    "http_status": 200,
+    "latency_seconds": 22.72,
+    "error": null
+  },
+  {
+    "query": "When will my package arrive if shipped normally?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Normal delivery takes 7-10 days"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"Normal delivery takes 7\u201310 days.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 20.97,
+    "error": null
+  },
+  {
+    "query": "transit duration from US to India please",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Normal: 7-10 days",
+      "Air Cargo: 20 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 8.28,
+    "error": null
+  },
+  {
+    "query": "Does air cargo take 20 days?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Air Cargo takes around 20 days"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"Yes, Air Cargo takes around 20 days.\"}",
+    "http_status": 200,
+    "latency_seconds": 22.77,
+    "error": null
+  },
+  {
+    "query": "Tell me how many days normal shipping takes.",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Normal delivery takes 7-10 days"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"Normal delivery takes 7\u201310 days.\"}",
+    "http_status": 200,
+    "latency_seconds": 10.21,
+    "error": null
+  },
+  {
+    "query": "How long does it take by ship (sea cargo)?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Sea Cargo can take up to 3-4 months"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"Sea Cargo can take up to 3\u20134 months.\"}",
+    "http_status": 200,
+    "latency_seconds": 12.38,
+    "error": null
+  },
+  {
+    "query": "US se India delivery time kya hai?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Normal: 7-10 days",
+      "Air Cargo: 20 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 12.17,
+    "error": null
+  },
+  {
+    "query": "What are the delivery estimates for all services?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Normal: 7-10 days",
+      "Air Cargo: 20 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 13.89,
+    "error": null
+  },
+  {
+    "query": "Is normal delivery quicker than air cargo?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Normal delivery takes 7-10 days",
+      "Air Cargo takes around 20 days"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\"response\": \"Yes, Normal delivery takes 7\u201310 days, whereas Air Cargo takes around 20 days.\"}",
+    "http_status": 200,
+    "latency_seconds": 9.63,
+    "error": null
+  },
+  {
+    "query": "Delivery timeline info needed.",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Normal: 7-10 days",
+      "Air Cargo: 20 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 8.56,
+    "error": null
+  },
+  {
+    "query": "How long does shipping take?",
+    "source_faq": "delivery_time",
+    "expected_facts": [
+      "Fast: 3-5 days",
+      "Normal: 7-10 days",
+      "Air Cargo: 20 days",
+      "Sea Cargo: 3-4 months"
+    ],
+    "should_cite_faq": true,
+    "bot_response": "{\n  \"response\": \"Fast delivery takes 3\u20135 days, Normal delivery takes 7\u201310 days, Air Cargo takes around 20 days, and Sea Cargo can take up to 3\u20134 months.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 0.82,
+    "error": null
+  },
+  {
+    "query": "Can I return a package?",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false,
+    "bot_response": "{\n  \"response\": \"The answer is not in the FAQ and I cannot answer it. Please contact support@deliveryhub.com.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 0.98,
+    "error": null
+  },
+  {
+    "query": "Do you ship to Europe?",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false,
+    "bot_response": "{\"response\": \"The answer is not in the FAQ and I cannot answer it. Please reach out to support@deliveryhub.com for assistance.\"}",
+    "http_status": 200,
+    "latency_seconds": 6.92,
+    "error": null
+  },
+  {
+    "query": "What's the weather today?",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false,
+    "bot_response": "{\n  \"response\": \"The answer is not in the FAQ and I cannot answer it. Please contact support@deliveryhub.com.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 14.08,
+    "error": null
+  },
+  {
+    "query": "Hi",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false,
+    "bot_response": "{\"response\": \"Hello! I am DeliveryHub, your international shipping service specializing in parcel delivery between the USA and India. How can I help you today?\"}",
+    "http_status": 200,
+    "latency_seconds": 0.98,
+    "error": null
+  },
+  {
+    "query": "asdfghjkl",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false,
+    "bot_response": "{\n  \"response\": \"The answer to this question is not in the FAQ, and I cannot answer it. Please reach out to support@deliveryhub.com for further assistance.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 2.8,
+    "error": null
+  },
+  {
+    "query": "Do you offer cash on delivery?",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false,
+    "bot_response": "{\"response\": \"The answer is not in the FAQ and I cannot answer it. Please reach out to support@deliveryhub.com for assistance.\"}",
+    "http_status": 200,
+    "latency_seconds": 3.47,
+    "error": null
+  },
+  {
+    "query": "What is the capital of France?",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false,
+    "bot_response": "{\n  \"response\": \"The answer is not in the FAQ and I cannot answer it. Please reach out to support@deliveryhub.com for further assistance.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 5.3,
+    "error": null
+  },
+  {
+    "query": "Can I change my delivery address after booking?",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false,
+    "bot_response": "{\"response\": \"The answer is not in the FAQ and I cannot answer it. Please contact support@deliveryhub.com for assistance.\"}",
+    "http_status": 200,
+    "latency_seconds": 2.3,
+    "error": null
+  },
+  {
+    "query": "Hello bot, how are you?",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false,
+    "bot_response": "{\"response\": \"The answer is not in the FAQ and I cannot answer it. Please contact support at support@deliveryhub.com.\"}",
+    "http_status": 200,
+    "latency_seconds": 0.72,
+    "error": null
+  },
+  {
+    "query": "Do you have a mobile app?",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false,
+    "bot_response": "{\"response\": \"The answer is not in the FAQ and I cannot answer it. Please contact support@deliveryhub.com for assistance.\"}",
+    "http_status": 200,
+    "latency_seconds": 0.69,
+    "error": null
+  },
+  {
+    "query": "Are there any customs duties for shipping to India?",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false,
+    "bot_response": "{\n  \"response\": \"The answer is not in the FAQ and I cannot answer it. Please contact support@deliveryhub.com.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 0.69,
+    "error": null
+  },
+  {
+    "query": "Tell me a joke.",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false,
+    "bot_response": "{\n  \"response\": \"The answer to your question is not in the FAQ and I cannot answer it. Please reach out to support@deliveryhub.com for further assistance.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 0.78,
+    "error": null
+  },
+  {
+    "query": "How do I cancel my order?",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false,
+    "bot_response": "{\"response\": \"The answer is not in the FAQ and I cannot answer it. Please contact support at support@deliveryhub.com.\"}",
+    "http_status": 200,
+    "latency_seconds": 0.91,
+    "error": null
+  },
+  {
+    "query": "1234567890",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false,
+    "bot_response": "{\n  \"response\": \"The answer is not in the FAQ and I cannot answer it. Please contact support at support@deliveryhub.com.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 7.71,
+    "error": null
+  },
+  {
+    "query": "What is your customer support phone number?",
+    "source_faq": "off_topic",
+    "expected_facts": [
+      "not in FAQ",
+      "cannot answer"
+    ],
+    "should_cite_faq": false,
+    "bot_response": "{\n  \"response\": \"The answer is not in the FAQ and I cannot answer it. Please contact us at support@deliveryhub.com.\"\n}",
+    "http_status": 200,
+    "latency_seconds": 5.48,
+    "error": null
+  }
+]

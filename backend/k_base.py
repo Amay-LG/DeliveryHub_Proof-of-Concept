@@ -3,7 +3,7 @@ import os
 import psycopg2
 import psycopg2.extras
 import httpx
-# from pgvector.psycopg2 import register_vector
+# pyrefly: ignore [missing-import]
 from pgvector.psycopg2 import register_vector
 
 load_dotenv()
