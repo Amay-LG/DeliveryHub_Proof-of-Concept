@@ -27,7 +27,7 @@ export function ChatInput({ chatMessages, setChatMessages }) { //Must start with
 
     setInputText(''); //Sets inputText to empty, but does NOT update HTML
     const res = await fetch(
-      `http://localhost:8000/generate-message?model_name=gemini-3.5-flash-lite&prompt=${encodeURIComponent(inputText)}`
+      `http://localhost:8000/respond_to_prompt?prompt=${encodeURIComponent(inputText)}`
     );
     const data = await res.json();
 

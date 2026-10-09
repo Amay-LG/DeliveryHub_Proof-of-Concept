@@ -4,6 +4,7 @@ import asyncio
 import json
 import psycopg2
 import psycopg2.extras
+from enum import Enum
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from dotenv import load_dotenv
@@ -60,30 +61,46 @@ def get_relevant_faqs(prompt: str, limit: int = NUM_FAQS_TO_MATCH):
     return [{"question": r["question"], "answer": r["answer"]} for r in rows]
 
 
-@app.get("/classify-message")
-async def classify_message(model_name, prompt):
+class PromptCategory(str, Enum):
+    GET_A_QUOTE = "GET_A_QUOTE"
+    QUESTION = "QUESTION"
+    OTHER = "OTHER"
+
+# Aliases for direct access
+Category = PromptCategory
+GET_A_QUOTE = PromptCategory.GET_A_QUOTE
+QUESTION = PromptCategory.QUESTION
+OTHER = PromptCategory.OTHER
+
+
+async def get_a_quote(model, prompt):
+    return {
+        "status": 200,
+        "response": "Thank you for requesting a quote! Instant online quote calculation is coming soon."
+    }
+
+
+async def classify_prompt(model, prompt) -> PromptCategory:
     api_key = os.getenv("GEMINI_API_KEY")
     if not api_key:
         return {"error": "API key is missing"}
 
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
     headers = {"Content-Type": "application/json"}
 
-    faqs = get_relevant_faqs(prompt)
-    faq_context = "\n".join([f"Q: {faq['question']}\nA: {faq['answer']}" for faq in faqs]) if faqs else "No relevant FAQ entries found."
-    
+    valid_categories = [cat.value for cat in PromptCategory]
+
     payload = {
         "contents": [{"parts": [{"text": prompt}]}],
         "systemInstruction": {
             "parts": [{
                 "text": (
-                    "You are a message classifier. Classify the user's message into exactly one "
-                    "of these categories: question, statement, greeting, request. "
-                    "Also give your confidence in that classification, from 0 to 1."
-                    "Use the FAQ entries below as your "
-                    "primary source of truth if they're relevant. If none of them answer the "
-                    "question, say so and answer from your own knowledge, making clear that "
-                    "it isn't from the FAQ.\n\nFAQ entries:\n" + faq_context 
+                    "You are an intent classifier for DeliveryHub, an international parcel shipping service between the USA and India.\n"
+                    "Classify the user's prompt into exactly one of the following categories:\n"
+                    "- GET_A_QUOTE: The user is asking for a shipping quote, price estimate, or shipping rate calculation for sending packages/parcels.\n"
+                    "- QUESTION: The user is asking a general question, inquiry, or FAQ regarding DeliveryHub's services, delivery times, couriers, or policies.\n"
+                    "- OTHER: Any other message, greeting, chit-chat, unclear input, or off-topic request.\n\n"
+                    f"Choose exactly one category from: {', '.join(valid_categories)}."
                 )
             }]
         },
@@ -94,80 +111,32 @@ async def classify_message(model_name, prompt):
                 "properties": {
                     "category": {
                         "type": "STRING",
-                        "enum": ["question", "statement", "greeting", "request"]
-                    },
-                    "confidence": {"type": "NUMBER"},
-                    "response": {"type": "STRING"}
+                        "enum": valid_categories
+                    }
                 },
-                "required": ["category", "confidence", "response"]
+                "required": ["category"]
             }
         }
     }
 
     timeout_settings = httpx.Timeout(30.0)
 
-    async with httpx.AsyncClient(timeout=timeout_settings) as client:
-        response = await client.post(url, headers=headers, json=payload)
+    try:
+        async with httpx.AsyncClient(timeout=timeout_settings) as client:
+            response = await client.post(url, headers=headers, json=payload)
 
-    response_data = response.json()
+        response_data = response.json()
+        if "candidates" in response_data and response_data["candidates"]:
+            result_text = response_data["candidates"][0]["content"]["parts"][0]["text"]
+            category_str = json.loads(result_text).get("category", "").strip().upper()
+            return PromptCategory(category_str)
+    except Exception as e:
+        print(f"Error in classify_prompt: {e}")
 
-    # Handle Gemini API errors (rate limiting, content filtering, etc.)
-    if "candidates" not in response_data:
-        error_msg = response_data.get("error", {}).get("message", "Unknown Gemini API error")
-        return {
-            "status": response.status_code,
-            "category": "error",
-            "confidence": 0,
-            "response": f"Gemini API error: {error_msg}"
-        }
+    return PromptCategory.OTHER
 
-    result_text = response_data["candidates"][0]["content"]["parts"][0]["text"]
-    classification=json.loads(result_text)
-
-    return {
-        "status": response.status_code,
-        "category": classification["category"],
-        "confidence": classification["confidence"],
-        "response": classification["response"]
-    }
-
-# @app.get("/test-models")
-# async def evaluate_gemini_models():
-#     api_key = os.getenv("GEMINI_API_KEY")
-#     if not api_key:
-#         return {"error": "API key is missing"}
-
-#     url1 = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key={api_key}"
-#     url2 = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key={api_key}"
-    
-#     headers = {"Content-Type": "application/json"}
-#     payload = {
-#         "contents": [{"parts": [{"text": "Hello! Please reply with your best joke."}]}]
-#     }
-
-#     timeout_settings = httpx.Timeout(30.0)
-    
-#     async with httpx.AsyncClient(timeout=timeout_settings) as client:
-#         task1 = client.post(url1, headers=headers, json=payload)
-#         task2 = client.post(url2, headers=headers, json=payload)
-        
-#         response1, response2 = await asyncio.gather(task1, task2)
-        
-#     return {
-#         "model_3_5_lite": {
-#             "status": response1.status_code, 
-#             "latency_seconds": response1.elapsed.total_seconds(), # Extracts the exact time
-#             "data": response1.json()["candidates"][0]["content"]["parts"][0]["text"]
-#         },
-#         "model_3_6_flash": {
-#             "status": response2.status_code, 
-#             "latency_seconds": response2.elapsed.total_seconds(), # Extracts the exact time
-#             "data": response2.json()["candidates"][0]["content"]["parts"][0]["text"]
-#         }
-#     }
-
-@app.get("/generate-message")
-async def get_message_from_gemini(model_name, prompt):
+@app.get("/question")
+async def question(model_name, prompt):
     api_key = os.getenv("GEMINI_API_KEY")
     if not api_key:
         return {"error": "API key is missing"}
@@ -233,4 +202,29 @@ async def get_message_from_gemini(model_name, prompt):
         "status": response.status_code,
         "latency_seconds": response.elapsed.total_seconds(),
         "response": json.loads(raw_response)['response']
+    }
+
+
+@app.get("/respond_to_prompt")
+@app.get("/respond-to-prompt")
+async def respond_to_prompt(prompt: str):
+    model = "gemini-3.5-flash-lite"
+    category = await classify_prompt(model, prompt)
+
+    handlers = {
+        PromptCategory.GET_A_QUOTE: get_a_quote,
+        PromptCategory.QUESTION: question,
+        # Open to expanding later with additional customer request handlers
+    }
+
+    handler = handlers.get(category)
+    if handler:
+        if asyncio.iscoroutinefunction(handler):
+            return await handler(model, prompt)
+        else:
+            return handler(model, prompt)
+
+    return {
+        "status": 200,
+        "response": "I'm sorry, I didn't quite understand that. Please try again, or ask a question about our delivery services or request a shipping quote."
     }
