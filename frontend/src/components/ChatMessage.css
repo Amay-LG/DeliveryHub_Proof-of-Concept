@@ -29,3 +29,38 @@
     border-radius: 45px;
     object-fit: cover; /*Prevents distortion*/
   }
+
+  .typing-dots {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 4px;
+    min-height: 18px;
+  }
+
+  .typing-dots span {
+    width: 7px;
+    height: 7px;
+    background-color: #71717a;
+    border-radius: 50%;
+    animation: typingBounce 1.4s infinite ease-in-out both;
+  }
+
+  .typing-dots span:nth-child(1) {
+    animation-delay: -0.32s;
+  }
+
+  .typing-dots span:nth-child(2) {
+    animation-delay: -0.16s;
+  }
+
+  @keyframes typingBounce {
+    0%, 80%, 100% {
+      transform: scale(0.5);
+      opacity: 0.35;
+    }
+    40% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }

@@ -1,10 +1,13 @@
 import os
+import re
 import httpx
 import asyncio
 import json
 import psycopg2
 import psycopg2.extras
+import psycopg2.pool
 from enum import Enum
+from typing import Optional
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from dotenv import load_dotenv
@@ -15,16 +18,47 @@ from k_base import init_db, seed_faqs
 
 load_dotenv()
 
+DATABASE_URL = os.getenv("DATABASE_URL")
+http_client: Optional[httpx.AsyncClient] = None
+db_pool: Optional[psycopg2.pool.SimpleConnectionPool] = None
+
+def get_http_client() -> httpx.AsyncClient:
+    global http_client
+    if http_client is None or http_client.is_closed:
+        http_client = httpx.AsyncClient(timeout=httpx.Timeout(30.0))
+    return http_client
+
+def get_db_connection():
+    global db_pool
+    if db_pool is None:
+        db_pool = psycopg2.pool.SimpleConnectionPool(1, 10, DATABASE_URL)
+    return db_pool.getconn()
+
+def release_db_connection(conn):
+    global db_pool
+    if db_pool and conn:
+        db_pool.putconn(conn)
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Runs once when FastAPI starts up, before accepting incoming requests
+    global http_client, db_pool
     init_db()
     seed_faqs()
+    http_client = httpx.AsyncClient(timeout=httpx.Timeout(30.0))
+    if DATABASE_URL:
+        try:
+            db_pool = psycopg2.pool.SimpleConnectionPool(1, 10, DATABASE_URL)
+        except Exception as e:
+            print(f"Error initializing DB connection pool: {e}")
     yield
-    # Code placed here runs on server shutdown (if needed)
+    # Clean up resources on server shutdown
+    if http_client and not http_client.is_closed:
+        await http_client.aclose()
+    if db_pool:
+        db_pool.closeall()
 
 app = FastAPI(lifespan=lifespan)
-DATABASE_URL = os.getenv("DATABASE_URL")
 
 app.add_middleware(
     CORSMiddleware,
@@ -46,19 +80,25 @@ def get_relevant_faqs(prompt: str, limit: int = NUM_FAQS_TO_MATCH):
         print(f"Error getting embedding: {e}")
         return []
 
-    conn = psycopg2.connect(DATABASE_URL)
-    register_vector(conn)
-    cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+    conn = None
+    try:
+        conn = get_db_connection()
+        register_vector(conn)
+        cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
 
-    cur.execute(
-        "SELECT question, answer FROM faqs ORDER BY embedded <=> %s::vector LIMIT %s", 
-        (emb, limit)
-    )
-    rows = cur.fetchall()
-    cur.close()
-    conn.close()
-
-    return [{"question": r["question"], "answer": r["answer"]} for r in rows]
+        cur.execute(
+            "SELECT question, answer FROM faqs ORDER BY embedded <=> %s::vector LIMIT %s", 
+            (emb, limit)
+        )
+        rows = cur.fetchall()
+        cur.close()
+        return [{"question": r["question"], "answer": r["answer"]} for r in rows]
+    except Exception as e:
+        print(f"Error querying relevant FAQs: {e}")
+        return []
+    finally:
+        if conn:
+            release_db_connection(conn)
 
 
 class PromptCategory(str, Enum):
@@ -79,12 +119,37 @@ async def get_a_quote(model, prompt):
         "response": "Thank you for requesting a quote! Instant online quote calculation is coming soon."
     }
 
+#TODO: For more FAQs, will need to add more patterns
+QUOTE_PATTERNS = [
+    r"\bquotes?\b",
+    r"\bhow much (does it cost|is it|to ship|for shipping)\b",
+    r"\bshipping (cost|rates?|price|quote|estimate)\b",
+    r"\b(price|cost) (estimate|calculation|for|to ship)\b",
+    r"\bestimates?\b",
+    r"\brates?\b",
+    r"\bcost\?",
+    r"\bprice\?",
+]
+
+def fast_classify_prompt(prompt: str) -> Optional[PromptCategory]:
+    p = prompt.strip().lower()
+    for pattern in QUOTE_PATTERNS:
+        if re.search(pattern, p):
+            return PromptCategory.GET_A_QUOTE
+    return None
+
 
 async def classify_prompt(model, prompt) -> PromptCategory:
+    # Fast-path check: Return immediately without making any remote LLM API calls
+    fast_category = fast_classify_prompt(prompt)
+    if fast_category is not None:
+        return fast_category
+
     api_key = os.getenv("GEMINI_API_KEY")
     if not api_key:
-        return {"error": "API key is missing"}
+        return PromptCategory.OTHER
 
+    client = get_http_client()
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
     headers = {"Content-Type": "application/json"}
 
@@ -119,12 +184,8 @@ async def classify_prompt(model, prompt) -> PromptCategory:
         }
     }
 
-    timeout_settings = httpx.Timeout(30.0)
-
     try:
-        async with httpx.AsyncClient(timeout=timeout_settings) as client:
-            response = await client.post(url, headers=headers, json=payload)
-
+        response = await client.post(url, headers=headers, json=payload)
         response_data = response.json()
         if "candidates" in response_data and response_data["candidates"]:
             result_text = response_data["candidates"][0]["content"]["parts"][0]["text"]
@@ -179,10 +240,8 @@ async def question(model_name, prompt):
         }
     }
 
-    timeout_settings = httpx.Timeout(30.0)
-    
-    async with httpx.AsyncClient(timeout=timeout_settings) as client:
-        response = await client.post(url, headers=headers, json=payload)
+    client = get_http_client()
+    response = await client.post(url, headers=headers, json=payload)
 
     response_data = response.json()
 

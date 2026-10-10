@@ -31,7 +31,10 @@ def init_db():
     cur.close()
     conn.close()
 
-def get_embedding(text: str) -> list[float]:
+from functools import lru_cache
+
+@lru_cache(maxsize=512)
+def _cached_embedding(text: str) -> tuple:
     api_key = os.getenv("GEMINI_API_KEY")
     if not api_key:
         raise ValueError("GEMINI_API_KEY is not set")
@@ -48,7 +51,11 @@ def get_embedding(text: str) -> list[float]:
     response = httpx.post(url, headers=headers, json=payload, timeout=30.0)
     response.raise_for_status()
     data = response.json()
-    return data["embedding"]["values"]
+    return tuple(data["embedding"]["values"])
+
+def get_embedding(text: str) -> list[float]:
+    normalized = " ".join(text.strip().lower().split())
+    return list(_cached_embedding(normalized))
 
 def seed_faqs():
     # Replace these with actual questions and answers

@@ -4,7 +4,7 @@ import UserProfileImage from '../assets/user.png';
 import './ChatMessage.css'
 //Double dots => bo back two folders
 
-export function ChatMessage({message, sender}) {
+export function ChatMessage({message, sender, isLoading}) {
     //const {message, sender} = props ^
     
     //const message = props.message ^^
@@ -24,7 +24,15 @@ export function ChatMessage({message, sender}) {
         )}
         <div 
           className='chat-message-text'>
-          {message}
+          {isLoading || (sender === 'robot' && !message) ? (
+            <div className="typing-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          ) : (
+            message
+          )}
         </div>
         {(sender === 'user') && (
           <img src={UserProfileImage} 

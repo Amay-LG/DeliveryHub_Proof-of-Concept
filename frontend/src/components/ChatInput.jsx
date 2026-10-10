@@ -13,45 +13,65 @@ export function ChatInput({ chatMessages, setChatMessages }) { //Must start with
   }
 
   async function sendMessage() {
+    if (!inputText.trim()) return;
+
+    const currentInput = inputText;
+    const robotMessageId = crypto.randomUUID();
 
     const newChatMessages = [
       ...chatMessages, //spread operator, copies vals into new array
       {
-        message: inputText,
+        message: currentInput,
         sender: 'user',
         id: crypto.randomUUID()
       }
     ];
 
-    setChatMessages(newChatMessages);
-
-    setInputText(''); //Sets inputText to empty, but does NOT update HTML
-    const res = await fetch(
-      `http://localhost:8000/respond_to_prompt?prompt=${encodeURIComponent(inputText)}`
-    );
-    const data = await res.json();
-
+    // Immediately trigger loading state and show typing bubble
     setIsLoading(true);
-    setChatMessages([ //Added new value to end of array
+    setInputText('');
+    setChatMessages([
       ...newChatMessages,
       {
         message: '',
         sender: 'robot',
-        id: crypto.randomUUID()
+        isLoading: true,
+        id: robotMessageId
       }
     ]);
 
-    setChatMessages([ //Added new value to end of array
-      ...newChatMessages,
-      {
-        // message: "Filler",
-        message: data.response,
-        sender: 'robot',
-        id: crypto.randomUUID()
-      }
-    ]);
-    setIsLoading(false);
+    try {
+      const res = await fetch(
+        `http://localhost:8000/respond_to_prompt?prompt=${encodeURIComponent(currentInput)}`
+      );
+      const data = await res.json();
 
+      setChatMessages(prevMessages =>
+        prevMessages.map(msg =>
+          msg.id === robotMessageId
+            ? {
+              ...msg,
+              message: data.response || data.data || "Sorry, I couldn't process your request.",
+              isLoading: false
+            }
+            : msg
+        )
+      );
+    } catch (error) {
+      setChatMessages(prevMessages =>
+        prevMessages.map(msg =>
+          msg.id === robotMessageId
+            ? {
+              ...msg,
+              message: "Unable to connect to the server. Please check your connection and try again.",
+              isLoading: false
+            }
+            : msg
+        )
+      );
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   function checkClear() {
